@@ -1,0 +1,30 @@
+﻿<html>
+	<head>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>
+	 $(document).ready(function(){
+	 var ul="http://gis.cdo.com.tw/api/getarea?x=台北市中正區"
+	 $.ajax({
+		url:ul,
+		type:'GET',
+		dataType:'json',
+		success:function(data){
+			alert("載入頁面成功")
+			var len = data.length;
+			for(var i =0;i<len;i++){
+			 document.getElementById('country').innerHTML="<p>"+
+			 data[i]["w_Area"]+"</p>"+"<font color=green>"+data[i]["w_Elepic"]+"</font>"
+			}
+		},
+		error:function(){
+			alert ("載入頁面失敗")
+		}
+	 })
+	 });
+	 </script>
+	 </head>
+	 <body>
+			<div id = country>
+			</div>
+	 </body>
+</html>
